@@ -3,18 +3,18 @@
 using namespace std;
 
 long long search(long long target, const std::vector<long long>& data, long long length) {
-    long long left = 0, right = length - 1;
+    long long left = 0, right = length - 1; // 上下界
     while (left <= right) {
         long long mid = left + (right - left) / 2;
         if (data[mid] < target) {
-            left = mid + 1;
+            left = mid + 1; // 如果目標在中值以上就將下界設為中值
         } else if (data[mid] > target) {
-            right = mid - 1;
+            right = mid - 1; // 如果目標在中值以上就將上界設為中值
         } else {
-            return mid + 1;
+            return mid + 1; // 找到目標，加一是為了將index值（從零開始）換成題目要的（從一開始）
         }
     }
-    return 0; // not found
+    return 0; // 找無
 }
 
 int main()
